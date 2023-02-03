@@ -6,7 +6,10 @@ const socialProfile = require("./router/socialProfile");
 const cors = require("cors");
 require("dotenv").config();
 
-const port = 4000 || process.env.PORT;
+const port = 8080 || process.env.PORT;
+
+mongoose.set("strictQuery", false);
+
 
 app.use(express.json());
 app.use(cors());
@@ -17,6 +20,7 @@ app.use("/social", socialProfile);
 app.listen(port, () => {
   mongoose
     .connect(process.env.DATABASE, {
+      
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
